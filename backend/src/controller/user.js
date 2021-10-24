@@ -8,7 +8,9 @@ function set(app) {
 function login(req, res, next) {
   const { username, password } = req.body;
 
-  return res.json(userService.login(username, password))
+  const token = userService.login(username, password)
+
+  return res.status(token.code).json(token)
 }
 
 function getUsers(req, res) {

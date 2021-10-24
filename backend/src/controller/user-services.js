@@ -1,24 +1,20 @@
 const { getToken } = require("./authentication-services.js");
-
-const users = [{
-  username: "admin",
-  password: "123456",
-}];
+const users = require('./user-model')
 
 function login(username, password) {
   let user = users.filter((u) => u.username == username);
   if (user.length == 0) {
-    return res.status(401).json({ error: "User not found" });
+    return {error: "User not found", code: 401}
   }
 
   user = user.filter((u) => u.username == username && u.password == password);
   if (user.length == 0) {
-    return res.status(401).json({ error: "Wrong password" });
+    return {error: "Wrong password", code: 401}
   }
 
   const token = getToken(username, password);
 
-  return { token };
+  return {...token, code: 200};
 }
 
 function getUsers() {
