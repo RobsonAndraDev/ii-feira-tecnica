@@ -1,7 +1,7 @@
-const userService = require('./user-services')
-const users = require('./user-model')
+const userService = require('./service')
+const users = require('./model')
 
-jest.mock('./user-model', () => ([{
+jest.mock('./model', () => ([{
   username: 'joao',
   password: '12345'
 }]))

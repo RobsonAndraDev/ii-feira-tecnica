@@ -1,4 +1,4 @@
-const authenticationService = require('./authentication-services')
+const authenticationService = require('./service')
 
 function validateToken(req, res, next) {
   const token = req.header("token");

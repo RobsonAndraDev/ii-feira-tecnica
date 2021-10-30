@@ -3,6 +3,4 @@ const users = [{
   password: "123456",
 }];
 
-module.exports = {
-  users
-}
+module.exports = users

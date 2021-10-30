@@ -1,4 +1,4 @@
-const userService = require('./user-services')
+const userService = require('./service')
 
 function set(app) {
   app.post("/login", login);

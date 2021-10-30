@@ -1,5 +1,5 @@
-const { getToken } = require("./authentication-services.js");
-const users = require('./user-model')
+const { getToken } = require("../../middlewares/authentication/service");
+const users = require('./model')
 
 function login(username, password) {
   let user = users.filter((u) => u.username == username);
@@ -14,7 +14,7 @@ function login(username, password) {
 
   const token = getToken(username, password);
 
-  return {...token, code: 200};
+  return {token, code: 200};
 }
 
 function getUsers() {
