@@ -1,4 +1,4 @@
-const userService = require('./service')
+const service = require('./service')
 
 function set(app) {
   app.post("/login", login);
@@ -8,13 +8,13 @@ function set(app) {
 function login(req, res, next) {
   const { username, password } = req.body;
 
-  const token = userService.login(username, password)
+  const token = service.login(username, password)
 
   return res.status(token.code).json(token)
 }
 
 function getUsers(req, res) {
-  return res.json(userService.getUsers());
+  return res.json(service.getUsers());
 }
 
 module.exports = {
