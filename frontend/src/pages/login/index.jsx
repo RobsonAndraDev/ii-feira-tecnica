@@ -33,20 +33,19 @@ function Login() {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [logStatus, setLogStatus] = useState("");
 
   const onClick = (e) => {
     e.preventDefault();
 
-    login(email, password).then((data) => {
-      setLogStatus(data.name);
+    login(email, password).then((user) => {
+      localStorage.setItem('token', user.token)
+      window.location.reload()
     });
   };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <h1>{logStatus}</h1>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
