@@ -7,7 +7,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { login } from "../../services/api.js";
+import apiService from "../../services/api";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,7 +37,7 @@ function Login() {
   const onClick = (e) => {
     e.preventDefault();
 
-    login(email, password).then((user) => {
+    apiService.login(email, password).then((user) => {
       localStorage.setItem('token', user.token)
       window.location.reload()
     });

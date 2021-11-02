@@ -15,6 +15,6 @@ fs.readdirSync(useCaseFolder).forEach(folder => {
   controler.set(app)
 })
 
-app.listen(5000, () => {
-  console.log("magic happens on 5000")
+app.listen(3001, () => {
+  console.log("magic happens on 3001")
 });

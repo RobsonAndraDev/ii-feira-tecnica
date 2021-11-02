@@ -1,5 +1,5 @@
 const axios = require("axios");
-const BASE_API_URL = "http://localhost:5000";
+const BASE_API_URL = "http://172.17.0.1:3001";
 
 async function login(username, password) {
   const { data } = await axios.post(`${BASE_API_URL}/login`, {
@@ -9,6 +9,8 @@ async function login(username, password) {
   return data;
 }
 
-module.exports = {
+const apiService = {
   login,
 };
+
+export default apiService;
