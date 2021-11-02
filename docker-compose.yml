@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  frontend:
+    image: ghcr.io/robsonandradev/feira-tech-frontend
+    ports:
+      - 5000:5000
+
+  backend:
+    image: ghcr.io/robsonandradev/feira-tech-backend
+    ports:
+      - 3001:3001
