@@ -1,0 +1,41 @@
+name: publish-frontend
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: frontend
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: install dependencies
+        run: |
+          yarn
+
+      - name: generate build folder
+        run: |
+          yarn build
+
+      - name: build docker image
+        run: |
+          docker build -t ghcr.io/robsonandradev/feira-tech-frontend
+
+      - name: docker login
+        run: |
+          echo ${{ secrets.GH_TOKEN }} | docker login ghcr.io -u robsonandradev --password-stdin
+
+      - name: docker push to ghcr
+        run: |
+          docker push ghcr.io/robsonandradev/feira-tech-frontend
