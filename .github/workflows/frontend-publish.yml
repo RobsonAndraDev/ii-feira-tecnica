@@ -30,7 +30,7 @@ jobs:
 
       - name: build docker image
         run: |
-          docker build -t ghcr.io/robsonandradev/feira-tech-frontend
+          docker build -t ghcr.io/robsonandradev/feira-tech-frontend .
 
       - name: docker login
         run: |
